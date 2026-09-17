@@ -450,6 +450,7 @@
     </div>
     <p class="note" style="margin-top:0" id="libPendingNote"></p>
     <ul class="lib" id="libList"></ul>
+    <p class="note" id="buildStamp"></p>
   </section>
 </div>
 
@@ -1008,6 +1009,13 @@
     });
     document.getElementById("libPendingNote").textContent =
       pending.length + "건이 수집돼 있습니다. 최근 40건만 표시합니다. 제목을 눌러 원문으로 갑니다.";
+
+    var stamp = document.getElementById("buildStamp");
+    if (stamp){
+      stamp.innerHTML = "이 화면은 <b>" + esc((state.meta && state.meta.builtAt) || "알 수 없음") +
+        "</b> 빌드입니다. 새 기능이 안 보이면 이 시각부터 확인하세요." +
+        "<br>읽어주기 기능은 <b>오늘 탭 → 상세 보기</b> 를 펼쳐야 나타납니다.";
+    }
 
     document.getElementById("libList").innerHTML = pending.slice(0, 40).map(function(e){
       return '<li><span class="date">' + esc((e.published || "").slice(5).replace("-", ".")) + '</span>' +

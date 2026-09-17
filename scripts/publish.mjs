@@ -29,6 +29,8 @@ const articles = fs.existsSync(articlesPath) ? JSON.parse(fs.readFileSync(articl
 
 fs.writeFileSync(path.join(OUT, "meta.json"), JSON.stringify({
   updatedAt: new Date().toISOString().slice(0, 10),
+  // 화면에 찍어 두면 지금 보는 것이 어느 빌드인지 바로 알 수 있다
+  builtAt: new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC",
   indexCount: slim.length,
   articleCount: articles.length,
   vocabCount: articles.reduce((n, a) => n + (a.vocab?.length || 0), 0),
