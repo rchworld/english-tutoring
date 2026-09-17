@@ -400,6 +400,38 @@
   .speaking .rd:not(.active){opacity:.55}
 
   .mini.say{flex:0 0 auto;padding:9px 12px}
+
+  /* ---------- 단어 툴팁 ---------- */
+  .vw.on{background:var(--accent-soft);border-bottom-style:solid}
+  .wpop{
+    position:fixed;z-index:60;
+    width:max-content;max-width:min(330px,calc(100vw - 28px));
+    background:var(--surface);border:1px solid var(--line-2);border-radius:11px;
+    box-shadow:0 2px 6px rgba(23,24,28,.10), 0 16px 40px -18px rgba(23,24,28,.45);
+    padding:13px 15px 12px;
+  }
+  :root[data-theme="dark"] .wpop,
+  :root:not([data-theme="light"]) .wpop{box-shadow:0 2px 6px rgba(0,0,0,.5), 0 16px 40px -18px rgba(0,0,0,.9)}
+  .wpop .w{
+    font-family:var(--font-display);font-size:17.5px;font-weight:600;
+    letter-spacing:-.01em;color:var(--ink);
+  }
+  .wpop .p{
+    font-family:var(--font-mono);font-size:10px;color:var(--muted);
+    letter-spacing:.06em;text-transform:uppercase;margin-left:7px;
+  }
+  .wpop .ko{font-size:14px;color:var(--ink);margin:7px 0 5px;line-height:1.55}
+  .wpop .en{font-size:12.8px;color:var(--ink-2);line-height:1.55;margin:0}
+  .wpop .acts{display:flex;gap:7px;margin-top:11px}
+  .wpop .acts button{
+    font-family:var(--font-body);font-size:12.5px;font-weight:500;
+    border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink-2);
+    padding:7px 11px;border-radius:7px;cursor:pointer;
+  }
+  .wpop .acts button:hover{background:var(--surface);color:var(--ink)}
+  .wpop .acts button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .wpop .acts .go{margin-left:auto}
+
   .no-tts{
     font-size:12.2px;color:var(--muted);border:1px dashed var(--line-2);
     border-radius:8px;padding:10px 12px;margin-bottom:14px;line-height:1.55;
@@ -1041,13 +1073,83 @@
   }
   tabs.forEach(function(t){ t.addEventListener("click", function(){ go(t.dataset.view); }); });
 
-  // 상세 본문 안의 단어를 누르면 단어장으로 이동하며 해당 카드를 편다.
-  document.addEventListener("click", function(e){
-    var b = e.target.closest ? e.target.closest(".vw") : null;
-    if (!b) return;
+  /* ---------- 본문 속 단어 툴팁 ----------
+     PC 는 마우스를 올리면, 폰은 누르면 뜻이 뜬다.
+     읽던 자리를 잃지 않는 것이 목적이라, 단어장으로 보내지 않고 그 자리에서 보여준다.
+  */
+  var pop = null, popAnchor = null, hoverTimer = null;
+  var canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  function vocabOf(word){
+    var a = state.articles[state.current];
+    return a && (a.vocab || []).find(function(v){ return v.w === word; });
+  }
+
+  function closePop(){
+    if (hoverTimer){ clearTimeout(hoverTimer); hoverTimer = null; }
+    if (pop){ pop.remove(); pop = null; }
+    if (popAnchor){ popAnchor.classList.remove("on"); popAnchor = null; }
+  }
+
+  function placePop(el, anchor){
+    var r = anchor.getBoundingClientRect();
+    el.style.visibility = "hidden";
+    el.style.left = "0px";
+    el.style.top = "0px";
+    var w = el.offsetWidth, h = el.offsetHeight, pad = 14;
+    var left = r.left + r.width / 2 - w / 2;
+    left = Math.max(pad, Math.min(left, window.innerWidth - w - pad));
+    var top = r.top - h - 9;
+    if (top < 64) top = r.bottom + 9;                       // 위가 좁으면 아래로
+    top = Math.min(top, window.innerHeight - h - 76);        // 탭바를 피한다
+    el.style.left = Math.round(left) + "px";
+    el.style.top = Math.round(top) + "px";
+    el.style.visibility = "";
+  }
+
+  function showPop(btn){
+    var item = vocabOf(btn.dataset.w);
+    if (!item) return;
+    if (popAnchor === btn) return;
+    closePop();
+
+    pop = document.createElement("div");
+    pop.className = "wpop";
+    pop.setAttribute("role", "dialog");
+    pop.innerHTML =
+      '<div><span class="w">' + esc(item.w) + '</span><span class="p">' + esc(item.pos) + '</span></div>' +
+      '<div class="ko">' + esc(item.ko) + '</div>' +
+      '<p class="en">' + esc(item.en) + '</p>' +
+      '<div class="acts">' +
+        '<button type="button" class="say" aria-label="발음 듣기">🔊 발음</button>' +
+        '<button type="button" class="go">단어장 →</button>' +
+      '</div>';
+    document.body.appendChild(pop);
+    placePop(pop, btn);
+
+    btn.classList.add("on");
+    popAnchor = btn;
+
+    pop.querySelector(".say").addEventListener("click", function(e){
+      e.stopPropagation();
+      sayWord(item.w, String(item.ex).replace(/<[^>]+>/g, ""));
+    });
+    pop.querySelector(".go").addEventListener("click", function(e){
+      e.stopPropagation();
+      openVocabWord(item.w);
+      closePop();
+    });
+    if (canHover){
+      pop.addEventListener("mouseenter", function(){ if (hoverTimer){ clearTimeout(hoverTimer); hoverTimer = null; } });
+      pop.addEventListener("mouseleave", function(){ hoverTimer = setTimeout(closePop, 220); });
+    }
+  }
+
+  // 단어장 탭으로 보내고 해당 카드를 펼친다
+  function openVocabWord(word){
     var a = state.articles[state.current];
     if (!a) return;
-    var idx = (a.vocab || []).findIndex(function(v){ return v.w === b.dataset.w; });
+    var idx = (a.vocab || []).findIndex(function(v){ return v.w === word; });
     if (idx < 0) return;
     go("vocab");
     var el = document.getElementById("v-" + idx);
@@ -1059,7 +1161,36 @@
       head.setAttribute("aria-expanded", "true");
     }
     el.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  document.addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest(".vw") : null;
+    if (b){
+      e.preventDefault();
+      if (popAnchor === b) closePop(); else showPop(b);   // 다시 누르면 닫힌다
+      return;
+    }
+    if (pop && !e.target.closest(".wpop")) closePop();
   });
+
+  if (canHover){
+    document.addEventListener("mouseover", function(e){
+      var b = e.target.closest ? e.target.closest(".vw") : null;
+      if (!b || popAnchor === b) return;
+      if (hoverTimer) clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function(){ showPop(b); }, 160);
+    });
+    document.addEventListener("mouseout", function(e){
+      var b = e.target.closest ? e.target.closest(".vw") : null;
+      if (!b) return;
+      if (hoverTimer) clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(closePop, 220);
+    });
+  }
+
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closePop(); });
+  window.addEventListener("scroll", closePop, { passive: true });
+  window.addEventListener("resize", closePop);
 
   /* ---------- 시작 ---------- */
   (async function start(){
