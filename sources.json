@@ -11,13 +11,7 @@
         "https://www.aihr.com/feed/",
         "https://www.aihr.com/blog/feed/"
       ],
-      "sitemaps": [
-        "https://www.aihr.com/sitemap_index.xml",
-        "https://www.aihr.com/post-sitemap.xml"
-      ],
-      "listings": [
-        "https://www.aihr.com/blog/"
-      ],
+      "sitemapIndex": "https://www.aihr.com/sitemap_index.xml",
       "articlePattern": "^https://www\\.aihr\\.com/blog/[a-z0-9-]+/?$",
       "enabled": true
     }
