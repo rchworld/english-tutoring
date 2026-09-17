@@ -349,6 +349,61 @@
   .detail ul{margin-top:2px}
   .detail .l-ko,.detail .l-en{font-size:13.8px;color:var(--ink-2);line-height:1.68}
   .detail .l-ko b,.detail .l-en b{color:var(--ink)}
+
+  /* ---------- 읽어주기 ---------- */
+  .readbar{
+    position:sticky;top:calc(env(safe-area-inset-top,0px) + 52px);z-index:10;
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 11px;margin:0 0 16px;
+  }
+  .readbar .play{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--font-body);font-size:13.5px;font-weight:500;
+    border:1px solid var(--accent);background:var(--accent);color:#fff;
+    padding:8px 14px;border-radius:8px;cursor:pointer;flex:0 0 auto;
+  }
+  :root[data-theme="dark"] .readbar .play{color:#1B1013}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .readbar .play{color:#1B1013}
+  }
+  .readbar .play:hover{filter:brightness(1.07)}
+  .readbar .ghost{
+    font-family:var(--font-body);font-size:13px;
+    border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);
+    padding:8px 11px;border-radius:8px;cursor:pointer;flex:0 0 auto;
+  }
+  .readbar .ghost:hover{background:var(--surface-2)}
+  .readbar select{
+    font-family:var(--font-mono);font-size:11.5px;color:var(--ink-2);
+    border:1px solid var(--line-2);background:var(--surface);
+    border-radius:7px;padding:7px 8px;cursor:pointer;max-width:148px;
+  }
+  .readbar .prog{
+    font-family:var(--font-mono);font-size:11px;color:var(--muted);
+    margin-left:auto;font-variant-numeric:tabular-nums;flex:0 0 auto;
+  }
+  .readbar button:focus-visible,.readbar select:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px
+  }
+  .readbar .hint{
+    flex:1 0 100%;font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:1px;
+  }
+
+  .rd{display:block;padding:3px 6px;margin:0 -6px;border-radius:5px;cursor:pointer}
+  li.rd{display:list-item;margin-left:0}
+  .rd:hover{background:var(--surface)}
+  .rd.active{
+    background:var(--accent-soft);
+    box-shadow:inset 2.5px 0 0 var(--accent);
+  }
+  .speaking .rd:not(.active){opacity:.55}
+
+  .mini.say{flex:0 0 auto;padding:9px 12px}
+  .no-tts{
+    font-size:12.2px;color:var(--muted);border:1px dashed var(--line-2);
+    border-radius:8px;padding:10px 12px;margin-bottom:14px;line-height:1.55;
+  }
 </style>
 </head>
 <body>
@@ -529,6 +584,9 @@
     } else {
       btnDetail.hidden = true;
     }
+
+    stopSpeech();
+    if (detailEl) setupSpeech(detailEl);
   }
 
   function setLang(v){
@@ -539,6 +597,262 @@
     if (ko) ko.setAttribute("aria-pressed", String(v === "ko"));
     if (en) en.setAttribute("aria-pressed", String(v === "en"));
     save("hrp.lang", v);
+  }
+
+
+  /* ---------- 읽어주기 (Web Speech API) ----------
+     - 미국식 음성만 골라 쓴다.
+     - 문장 단위로 끊어 읽는다. 긴 문단을 통째로 넘기면 iOS 가 중간에 끊는다.
+     - 읽는 문장을 하이라이트하고, 문장을 누르면 거기서부터 읽는다.
+  */
+  var synth = window.speechSynthesis || null;
+  var tts = { queue: [], qi: 0, playing: false, rate: 1, voice: null, voices: [] };
+
+  function ttsSupported(){ return !!(synth && window.SpeechSynthesisUtterance); }
+
+  function pickVoices(){
+    if (!ttsSupported()) return [];
+    var all = synth.getVoices() || [];
+    var us = all.filter(function(v){ return /^en[-_]US/i.test(v.lang); });
+    if (!us.length) us = all.filter(function(v){ return /^en/i.test(v.lang); });
+    // 미국식 기본 음성을 앞으로
+    var prefer = ["Samantha", "Ava", "Allison", "Susan", "Alex", "Aaron", "Nicky", "Google US English"];
+    us.sort(function(a, b){
+      var ia = prefer.findIndex(function(n){ return a.name.indexOf(n) === 0; });
+      var ib = prefer.findIndex(function(n){ return b.name.indexOf(n) === 0; });
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
+    tts.voices = us;
+    var saved = load("hrp.voice", null);
+    tts.voice = us.find(function(v){ return v.name === saved; }) || us[0] || null;
+    return us;
+  }
+
+  if (ttsSupported()){
+    pickVoices();
+    // iOS·크롬은 음성 목록을 비동기로 채운다.
+    synth.addEventListener("voiceschanged", function(){
+      pickVoices();
+      var sel = document.getElementById("voiceSel");
+      if (sel) fillVoiceSelect(sel);
+    });
+  }
+
+  function fillVoiceSelect(sel){
+    sel.innerHTML = tts.voices.map(function(v){
+      return '<option value="' + esc(v.name) + '"' + (tts.voice && v.name === tts.voice.name ? " selected" : "") +
+             '>' + esc(v.name.replace(/\s*\(.*\)$/, "")) + '</option>';
+    }).join("") || '<option>기본 음성</option>';
+  }
+
+  // 문장 단위로 쪼갠다. 한 덩어리는 180자를 넘기지 않는다.
+  function sentencesOf(text){
+    var clean = String(text).replace(/\s+/g, " ").trim();
+    if (!clean) return [];
+    var parts = clean.match(/[^.!?]+[.!?]+["'’\)\]]*\s*|[^.!?]+$/g) || [clean];
+    var out = [], cur = "";
+    parts.forEach(function(s){
+      s = s.trim();
+      if (!s) return;
+      if (cur && (cur + " " + s).length > 180){ out.push(cur); cur = s; }
+      else cur = cur ? cur + " " + s : s;
+    });
+    if (cur) out.push(cur);
+    return out;
+  }
+
+  // 영문 블록을 읽기 단위로 감싼다. 목록 항목은 그 자체가 한 단위다.
+  function wrapUnits(container, units){
+    var kids = Array.prototype.slice.call(container.childNodes);
+    var buf = [];
+    function flush(){
+      if (!buf.length) return;
+      var text = buf.map(function(n){ return n.textContent; }).join("").trim();
+      if (!text){ buf = []; return; }
+      var span = document.createElement("span");
+      span.className = "rd";
+      container.insertBefore(span, buf[0]);
+      buf.forEach(function(n){ span.appendChild(n); });
+      units.push(span);
+      buf = [];
+    }
+    kids.forEach(function(n){
+      if (n.nodeType === 1 && (n.tagName === "UL" || n.tagName === "OL")){
+        flush();
+        Array.prototype.forEach.call(n.children, function(li){
+          if (li.textContent.trim()){ li.classList.add("rd"); units.push(li); }
+        });
+      } else if (n.nodeType === 1 && n.tagName === "BR"){
+        flush();
+      } else {
+        buf.push(n);
+      }
+    });
+    flush();
+  }
+
+  function setupSpeech(detailEl){
+    var inner = detailEl.querySelector(".detail-in");
+    if (!inner || inner.dataset.rdReady) return;
+    inner.dataset.rdReady = "1";
+
+    if (!ttsSupported()){
+      var warn = document.createElement("div");
+      warn.className = "no-tts";
+      warn.textContent = "이 브라우저는 음성 읽기를 지원하지 않습니다. 아이폰 사파리나 크롬에서 열어 보세요.";
+      inner.insertBefore(warn, inner.firstChild);
+      return;
+    }
+
+    // 읽기 단위 수집: 영문 제목과 영문 본문만
+    var units = [];
+    Array.prototype.forEach.call(inner.children, function(node){
+      if (node.tagName === "H3"){
+        var en = node.querySelector(".l-en");
+        if (en && en.textContent.trim()){ en.classList.add("rd"); units.push(en); }
+      } else if (node.classList && node.classList.contains("l-en")){
+        wrapUnits(node, units);
+      }
+    });
+
+    tts.queue = [];
+    units.forEach(function(el){
+      sentencesOf(el.textContent).forEach(function(s){ tts.queue.push({ el: el, text: s }); });
+    });
+    if (!tts.queue.length) return;
+
+    var bar = document.createElement("div");
+    bar.className = "readbar";
+    bar.innerHTML =
+      '<button type="button" class="play" id="ttsPlay">' +
+        '<svg width="12" height="13" viewBox="0 0 12 13" aria-hidden="true">' +
+        '<path d="M1 1.2v10.6L11 6.5z" fill="currentColor"/></svg> 읽어주기</button>' +
+      '<button type="button" class="ghost" id="ttsStop" hidden>정지</button>' +
+      '<select id="rateSel" aria-label="읽기 속도">' +
+        '<option value="0.7">0.7×</option><option value="0.85">0.85×</option>' +
+        '<option value="1" selected>1.0×</option><option value="1.15">1.15×</option>' +
+        '<option value="1.3">1.3×</option></select>' +
+      '<select id="voiceSel" aria-label="음성 선택"></select>' +
+      '<span class="prog" id="ttsProg">' + tts.queue.length + ' 문장</span>' +
+      '<span class="hint">미국식 영어로 읽습니다. 문장을 누르면 그 문장부터 다시 읽습니다.</span>';
+    inner.insertBefore(bar, inner.firstChild);
+
+    fillVoiceSelect(bar.querySelector("#voiceSel"));
+    var savedRate = load("hrp.rate", 1);
+    tts.rate = savedRate;
+    bar.querySelector("#rateSel").value = String(savedRate);
+
+    bar.querySelector("#ttsPlay").addEventListener("click", function(){
+      if (tts.playing) pauseSpeech(); else speakFrom(tts.qi || 0);
+    });
+    bar.querySelector("#ttsStop").addEventListener("click", stopSpeech);
+    bar.querySelector("#rateSel").addEventListener("change", function(e){
+      tts.rate = parseFloat(e.target.value) || 1;
+      save("hrp.rate", tts.rate);
+      if (tts.playing) speakFrom(tts.qi);   // 새 속도로 현재 문장부터 다시
+    });
+    bar.querySelector("#voiceSel").addEventListener("change", function(e){
+      tts.voice = tts.voices.find(function(v){ return v.name === e.target.value; }) || tts.voice;
+      if (tts.voice) save("hrp.voice", tts.voice.name);
+      if (tts.playing) speakFrom(tts.qi);
+    });
+
+    // 문장을 누르면 거기서부터
+    inner.addEventListener("click", function(e){
+      if (e.target.closest(".vw")) return;          // 단어 버튼은 단어장으로
+      var el = e.target.closest(".rd");
+      if (!el) return;
+      var at = tts.queue.findIndex(function(q){ return q.el === el; });
+      if (at >= 0) speakFrom(at);
+    });
+  }
+
+  function highlight(el){
+    var inner = document.querySelector("#detail .detail-in");
+    if (inner) inner.classList.add("speaking");
+    document.querySelectorAll("#detail .rd.active").forEach(function(n){ n.classList.remove("active"); });
+    if (!el) return;
+    el.classList.add("active");
+    var r = el.getBoundingClientRect();
+    if (r.top < 120 || r.bottom > window.innerHeight - 140){
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  function updateBar(){
+    var play = document.getElementById("ttsPlay");
+    var stop = document.getElementById("ttsStop");
+    var prog = document.getElementById("ttsProg");
+    if (!play) return;
+    play.innerHTML = tts.playing
+      ? '<svg width="12" height="13" viewBox="0 0 12 13" aria-hidden="true">' +
+        '<rect x="1" y="1" width="3.5" height="11" fill="currentColor"/>' +
+        '<rect x="7.5" y="1" width="3.5" height="11" fill="currentColor"/></svg> 일시정지'
+      : '<svg width="12" height="13" viewBox="0 0 12 13" aria-hidden="true">' +
+        '<path d="M1 1.2v10.6L11 6.5z" fill="currentColor"/></svg> ' + (tts.qi ? "이어서 읽기" : "읽어주기");
+    if (stop) stop.hidden = !tts.playing && !tts.qi;
+    if (prog) prog.textContent = (tts.playing || tts.qi)
+      ? (tts.qi + 1) + " / " + tts.queue.length
+      : tts.queue.length + " 문장";
+  }
+
+  function speakFrom(qi){
+    if (!ttsSupported() || !tts.queue.length) return;
+    setLang("en");                 // 한글 화면에선 영문이 숨겨져 하이라이트가 안 보인다
+    synth.cancel();
+    tts.qi = Math.max(0, Math.min(qi, tts.queue.length - 1));
+    tts.playing = true;
+    updateBar();
+    setTimeout(speakNext, 80);     // iOS: cancel 직후 speak 는 씹힌다
+  }
+
+  function speakNext(){
+    if (!tts.playing) return;
+    if (tts.qi >= tts.queue.length){ stopSpeech(); return; }
+    var item = tts.queue[tts.qi];
+    highlight(item.el);
+    updateBar();
+    var u = new SpeechSynthesisUtterance(item.text);
+    u.lang = "en-US";
+    u.rate = tts.rate;
+    if (tts.voice) u.voice = tts.voice;
+    u.onend = function(){ if (!tts.playing) return; tts.qi++; speakNext(); };
+    u.onerror = function(){ if (!tts.playing) return; tts.qi++; speakNext(); };
+    synth.speak(u);
+  }
+
+  function pauseSpeech(){
+    if (!ttsSupported()) return;
+    tts.playing = false;
+    synth.cancel();               // iOS 의 pause/resume 는 불안정해서 취소하고 문장 단위로 재개한다
+    updateBar();
+  }
+
+  function stopSpeech(){
+    if (!ttsSupported()) return;
+    tts.playing = false;
+    tts.qi = 0;
+    synth.cancel();
+    var inner = document.querySelector("#detail .detail-in");
+    if (inner) inner.classList.remove("speaking");
+    document.querySelectorAll("#detail .rd.active").forEach(function(n){ n.classList.remove("active"); });
+    updateBar();
+  }
+
+  // 단어 하나를 읽어 준다 (단어 -> 예문)
+  function sayWord(word, example){
+    if (!ttsSupported()) return;
+    tts.playing = false;
+    synth.cancel();
+    setTimeout(function(){
+      [word, example].filter(Boolean).forEach(function(text, i){
+        var u = new SpeechSynthesisUtterance(text);
+        u.lang = "en-US";
+        u.rate = i === 0 ? Math.min(tts.rate, 0.85) : tts.rate;  // 단어는 조금 천천히
+        if (tts.voice) u.voice = tts.voice;
+        synth.speak(u);
+      });
+    }, 80);
   }
 
   /* ---------- 단어장 ---------- */
@@ -571,6 +885,7 @@
           '<div class="def-en">' + esc(item.en) + '</div>' +
           '<div class="ex">' + item.ex + '<span class="src">' + esc(a.sourceName) + ' · ' + esc(a.published) + '</span></div>' +
           '<div class="card-actions">' +
+            '<button type="button" class="mini say" aria-label="발음 듣기">🔊</button>' +
             '<button type="button" class="mini again">다시 볼래요</button>' +
             '<button type="button" class="mini yes">외웠어요</button>' +
           '</div>' +
@@ -583,6 +898,9 @@
         body.hidden = open;
         el.classList.toggle("open", !open);
         head.setAttribute("aria-expanded", String(!open));
+      });
+      el.querySelector(".mini.say").addEventListener("click", function(){
+        sayWord(item.w, String(item.ex).replace(/<[^>]+>/g, ""));
       });
       el.querySelector(".mini.yes").addEventListener("click", function(){
         if (!isKnown(item.w)) state.known.push(item.w);
@@ -660,6 +978,7 @@
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
 
   function go(name){
+    if (name !== "today") stopSpeech();
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== name); });
     tabs.forEach(function(t){ t.setAttribute("aria-selected", String(t.dataset.view === name)); });
     window.scrollTo(0, 0);
