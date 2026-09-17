@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "id": "aihr-selection-process-practical-guide",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Selection Process: 7 Steps, Criteria & Tools To Hire Top Talent",
+    "url": "https://www.aihr.com/blog/selection-process-practical-guide/",
+    "category": "Articles",
+    "published": "2026-09-10",
+    "collectedAt": "2026-09-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-selection-process-practical-guide.md",
+    "chars": 33103
+  },
+  {
+    "id": "aihr-hr-budgeting-best-practices",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "HR Budgeting Best Practices: How Modern HR Teams Invest for Impact",
+    "url": "https://www.aihr.com/blog/hr-budgeting-best-practices/",
+    "category": "Articles",
+    "published": "2026-09-10",
+    "collectedAt": "2026-09-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-budgeting-best-practices.md",
+    "chars": 15808
+  },
+  {
+    "id": "aihr-work-goals-examples",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "24 Work Goals Examples To Drive Performance and Development",
+    "url": "https://www.aihr.com/blog/work-goals-examples/",
+    "category": "Articles",
+    "published": "2026-09-14",
+    "collectedAt": "2026-09-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-work-goals-examples.md",
+    "chars": 19222
+  },
+  {
+    "id": "aihr-how-to-get-hr-certification-without-experience",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "How To Get an HR Certification Without Experience (in 2026)",
+    "url": "https://www.aihr.com/blog/how-to-get-hr-certification-without-experience/",
+    "category": "Articles",
+    "published": "2026-09-14",
+    "collectedAt": "2026-09-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-how-to-get-hr-certification-without-experience.md",
+    "chars": 23102
+  },
+  {
+    "id": "aihr-culture-and-employee-retention",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Culture & Employee Retention: 8 Warning Signs & 5 Fixes",
+    "url": "https://www.aihr.com/blog/culture-and-employee-retention/",
+    "category": "Articles",
+    "published": "2026-09-16",
+    "collectedAt": "2026-09-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-culture-and-employee-retention.md",
+    "chars": 13918
+  }
+]
