@@ -1,22 +1,38 @@
-# HR 논문 한 편
+# HR 아티클 한 편
 
-매일 HR 논문 한 편을 **한글·영문 요약**으로 읽고, 그 논문에서 나온 영어 단어를 그대로 외우는 모바일 웹.
+매일 HR 아티클 한 편을 **한글·영문 요약**으로 읽고, 그 글에서 나온 영어 단어를 그대로 외우는 모바일 웹.
+
+출처는 [AIHR](https://www.aihr.com/)(Academy to Innovate HR). 무료 공개 글만 다룬다.
 영어 공부와 HR 전문성을 한 번에 쌓는 것이 목적이다.
 
 아이폰 사파리에서 열고 **공유 → 홈 화면에 추가**하면 앱처럼 쓸 수 있다.
 
-## 현재 상태
+## 어떻게 돌아가나
 
-**목업(mockup) 단계.** 정적 HTML 한 파일이고 논문 데이터는 하드코딩되어 있다.
-화면 구성과 사용 흐름을 확인하기 위한 것으로, 백엔드·DB·자동 수집은 아직 없다.
+API 키 없이 운영한다. 요약은 Claude Code 세션에서 사람이 한 마디 던져 만든다.
+
+```
+[GitHub Actions]  수동 버튼 또는 매일 06:00 KST
+      |           AIHR 피드에서 새 글 수집 (본문은 임시 저장)
+      v
+ data/inbox.json  요약 대기열
+      |
+[Claude Code]     "오늘 거 처리해줘"
+      |           요약 + 단어 작성 -> docs/data/articles.json
+      |           원문 임시 파일 삭제 (scripts/cleanup.mjs)
+      v
+[GitHub Pages]    폰에서 열면 들어와 있음
+```
+
+나중에 API 키가 생기면 요약 단계만 스크립트로 갈아끼우면 된다. 데이터 형식은 그대로다.
 
 ## 화면
 
 | 탭 | 내용 |
 |---|---|
-| **오늘** | 논문 카드 — 학회지·저자·요약·핵심 수치. `한글 ⇄ ENG` 토글. `상세 보기`로 연구방법 / 주요 결과 / HR 시사점 / 한계 펼침 |
-| **단어장** | 그날 논문에서 뽑은 단어. 한글 뜻 + 영영 정의 + 논문 원문 예문. `외웠어요` 체크 |
-| **서재** | 지난 논문 목록 |
+| **오늘** | 아티클 카드 — 출처·날짜·요약·핵심 수치. `한글 ⇄ ENG` 토글. `상세 보기`로 섹션별 정리와 HR 시사점 펼침 |
+| **단어장** | 그날 글에서 뽑은 HR 용어. 한글 뜻 + 영영 정의 + 예문. `외웠어요` 체크 |
+| **서재** | 요약 완료한 글과, 수집만 해둔 1,300여 건의 목록 |
 
 ### 설계 의도
 
@@ -37,26 +53,31 @@ GitHub Pages는 `Settings → Pages → Source: main / docs` 로 켠다.
 ## 구조
 
 ```
-docs/
-  index.html            전체 목업 (HTML + CSS + JS 단일 파일)
-  manifest.webmanifest  홈 화면 추가용
-  icon-180.png          아이폰 홈 화면 아이콘
-  icon-512.png
-  .nojekyll             Jekyll 처리 비활성화
+sources.json          수집 대상 설정
+scripts/probe.mjs     소스가 무엇을 제공하는지 확인만 (저장 없음)
+scripts/collect.mjs   새 글 수집
+scripts/cleanup.mjs   요약 끝난 글의 원문 삭제
+scripts/publish.mjs   data/ -> docs/data/ 반영
+data/index.json       전체 글 URL 목록 (1,300건 이상)
+data/inbox.json       요약 대기열
+data/raw/*.md         요약용 임시 원문 (요약 후 삭제됨)
+docs/                 GitHub Pages 가 서빙하는 정적 사이트
+  index.html          화면 전체
+  data/articles.json  완성된 요약 — 화면이 읽는 파일
 ```
 
-상태는 `localStorage`에 저장된다 (`hrp.lang`, `hrp.known`). 기기 밖으로 나가지 않는다.
+## 저작권에 관하여
 
-## 샘플 데이터에 관하여
+원문 본문은 **저장소에 영구 보관하지 않는다.** 요약을 만드는 동안만 `data/raw/` 에 두고,
+끝나면 `scripts/cleanup.mjs` 로 지운다. 화면에 뜨는 요약문·단어 정의·예문은 모두 직접 작성한
+것이며 원문 인용이 아니다. 각 글에는 원문 링크를 붙인다.
 
-오늘의 논문으로 실린 Yang et al. (2022), *Nature Human Behaviour*,
-"The effects of remote work on collaboration among information workers" 는 실재하는 논문이다.
-다만 **요약문·단어 정의·예문·서재 목록은 화면 확인용으로 작성한 샘플**이며 원문 인용이 아니다.
+AIHR 의 `robots.txt` 는 `/wp-admin/` 외 전 경로를 허용한다. 수집은 공개 RSS 피드와
+사이트맵만 사용하고, 요청 사이에 2초 간격을 둔다. 로그인이 필요한 글은 다루지 않는다.
 
 ## 다음 단계
 
-- [ ] 논문 자동 수집 — Crossref / 저널 RSS
-- [ ] 요약·번역·단어 추출 자동화 — Claude API
-- [ ] 논문·요약·단어·학습기록 DB 스키마
+- [ ] 소스 추가 (SHRM, Josh Bersin 등)
+- [ ] 요약·단어 추출 자동화 — API 키가 생기면
 - [ ] 단어 복습 주기 (간격 반복)
 - [ ] Next.js 이전

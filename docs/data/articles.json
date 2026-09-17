@@ -1,0 +1,149 @@
+[
+  {
+    "id": "aihr-culture-and-employee-retention",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Culture & Employee Retention: 8 Warning Signs & 5 Fixes",
+    "url": "https://www.aihr.com/blog/culture-and-employee-retention/",
+    "published": "2026-09-16",
+    "category": "Talent Management",
+    "summary": {
+      "ko": "이직률은 문화 문제의 원인이 아니라 결과다. 사람은 '문화가 나빠서' 떠나는 게 아니라, 나쁜 경험이 반복된 끝에 떠난다. 그래서 유지율은 후행지표이고, 그전에 몰입도가 먼저 떨어진다. 갤럽 조사에서 조직 문화에 강하게 연결돼 있다고 느끼는 미국 직원은 20%에 불과했고, 그 20%는 이직을 알아볼 가능성이 47% 낮았다. 이 글은 문화가 무너지고 있다는 8가지 신호, 사람을 붙잡는 5가지 요인(심리적 안전감·성장 경로·관리자 역량·인정·보상 형평성), 그리고 진단→우선순위→시범운영의 3단계 개선 절차를 제시한다. 핵심 주장은 복지가 아니라 관리자의 일상적 습관이 문화를 만든다는 것이다.",
+      "en": "Turnover is the result of a culture problem, not its cause. People rarely leave because of \"culture\" as a single issue — they leave after repeated negative experiences. Retention is therefore a lagging indicator, and engagement falls first. Gallup found that only 20% of US employees feel strongly connected to their organisation's culture, and that those who do are 47% less likely to be looking for another job. The article sets out 8 warning signs that culture is hurting retention, 5 factors that keep people from leaving (psychological safety, growth pathways, manager quality, recognition, fair pay), and a three-step fix: diagnose, prioritise, then pilot and measure. Its central claim is that culture is built by managers' everyday habits, not by perks."
+    },
+    "findings": [
+      {
+        "k": "20%",
+        "ko": "조직 문화에 강한 유대를 느끼는 미국 직원 비율. 전 세계 직원 몰입도도 같은 20% 수준으로 떨어졌다.",
+        "en": "Share of US employees who feel strongly connected to their culture. Global engagement has fallen to the same 20%."
+      },
+      {
+        "k": "−47%",
+        "ko": "문화에 연결됐다고 느끼는 직원이 다른 일자리를 알아볼 가능성. 몰입할 가능성은 4.3배 높다.",
+        "en": "Lower likelihood of job-hunting among culturally connected employees, who are also 4.3× as likely to be engaged."
+      },
+      {
+        "k": "−51%",
+        "ko": "몰입도 높은 팀의 이직률 감소폭(이직률이 낮은 조직 기준). 높은 조직에서도 21% 낮다.",
+        "en": "Turnover reduction in highly engaged teams at low-turnover organisations; 21% at high-turnover ones."
+      }
+    ],
+    "detail": [
+      {
+        "h": {
+          "ko": "왜 유지율이 후행지표인가",
+          "en": "Why retention is a lagging indicator"
+        },
+        "body": {
+          "ko": "문화란 구성원이 관찰하는 규범, 행동, 기대치, 그리고 명문화되지 않은 규칙이다. 리더가 무엇에 보상하는지, 관리자가 무엇을 눈감아 주는지, 규정이 답을 주지 않을 때 사람들이 어떻게 결정하는지가 곧 문화다. 문제는 그것이 겉으로 드러날 때쯤이면 이미 사람이 나간 뒤라는 점이다. 이직은 누적된 결과이므로, 그 앞단의 <span class=\"vw\" data-w=\"engagement\">engagement</span> 하락을 조기 경보로 봐야 한다.",
+          "en": "Culture is the set of norms, behaviours, expectations and unwritten rules employees observe at work — what leaders reward, what managers tolerate, and how people decide when policy gives no clear answer. The problem is that by the time it shows up in the numbers, people have already gone. Turnover is cumulative, so the earlier fall in <span class=\"vw\" data-w=\"engagement\">engagement</span> is the signal to watch."
+        }
+      },
+      {
+        "h": {
+          "ko": "8가지 경고 신호",
+          "en": "8 warning signs"
+        },
+        "body": {
+          "ko": "<ul><li>특정 직무나 팀에서 이직 증가</li><li>퇴직 면담에서 관리자·성장·업무량 관련 주제가 반복</li><li>사내 추천 채용 감소</li><li>몰입도 점수 하락</li><li>특정 관리자 아래에서만 몰입도 하락</li><li><span class=\"vw\" data-w=\"internal mobility\">internal mobility</span> 저하</li><li>부서 이동 요청 증가</li><li>경력 경로에 대한 불확실성 표출</li></ul>개별 수치보다 <b>패턴</b>이 중요하다. 전사적 하락은 조직 차원의 문제이고, 특정 관리자 아래의 급등은 국소적 문제다. 먼저 관리자별·<span class=\"vw\" data-w=\"tenure\">tenure</span>별로 이직 데이터를 쪼개 보라.",
+          "en": "<ul><li>Rising turnover in specific roles or teams</li><li>Repeated exit-interview themes about managers, growth or workload</li><li>Falling internal referral rates</li><li>Declining engagement scores</li><li>Engagement falling under specific managers</li><li>Lower <span class=\"vw\" data-w=\"internal mobility\">internal mobility</span></li><li>More transfer requests</li><li>Employees voicing uncertainty about career progression</li></ul>The <b>pattern</b> matters more than any single number. A company-wide decline points to an organisational problem; a spike under one manager is local. Start by cutting turnover data by manager and by <span class=\"vw\" data-w=\"tenure\">tenure</span>."
+        }
+      },
+      {
+        "h": {
+          "ko": "사람을 붙잡는 5가지",
+          "en": "5 factors that keep people"
+        },
+        "body": {
+          "ko": "<ul><li><b><span class=\"vw\" data-w=\"psychological safety\">psychological safety</span></b> — 보복이나 망신 걱정 없이 이견을 말하고 실수를 인정할 수 있는가</li><li><b>성장 경로</b> — 다음 단계에 필요한 역량이 무엇이고 그게 현실적인가</li><li><b>관리자 역량</b> — 기대치를 명확히 하고, 정기적으로 피드백하며, 공정하게 대하는가</li><li><b>인정</b> — 연말 시상이 아니라 즉각적이고 구체적인 인정인가</li><li><b><span class=\"vw\" data-w=\"pay equity\">pay equity</span></b> — 보상 결정 방식을 이해하고 공정하다고 느끼는가</li></ul>글은 복지에 대해 분명히 선을 긋는다. 무료 식사나 게임룸은 문화를 <i>보조</i>할 뿐, 신뢰·자율·성장·인정·공정성을 대체하지 못한다.",
+          "en": "<ul><li><b><span class=\"vw\" data-w=\"psychological safety\">psychological safety</span></b> — can people disagree and admit mistakes without fear of retaliation?</li><li><b>Growth pathways</b> — do they know what skills the next step needs, and is it realistic?</li><li><b>Manager quality</b> — clear expectations, regular feedback, fair treatment</li><li><b>Recognition</b> — prompt and specific, not an annual award</li><li><b><span class=\"vw\" data-w=\"pay equity\">pay equity</span></b> — do people understand how pay decisions are made, and see them as fair?</li></ul>The article is blunt about perks: free food and a game room can <i>support</i> culture, but they do not substitute for trust, autonomy, growth, recognition and fairness."
+        }
+      },
+      {
+        "h": {
+          "ko": "3단계 개선 절차",
+          "en": "The three-step fix"
+        },
+        "body": {
+          "ko": "<b>1. 진단</b> — 몰입도 조사, 팀·관리자별 이직률, <span class=\"vw\" data-w=\"stay interview\">stay interview</span>와 퇴직 면담, 사내 이동 데이터를 본다. 개별 불만이 아니라 패턴을 찾는다.<br><b>2. 우선순위</b> — 격차가 가장 큰 한두 곳만 고른다. 무엇을 바꿔야 할지 모르는 채로 전사 문화 혁신을 시작하지 않는다.<br><b>3. 시범운영과 측정</b> — 한 팀에서 먼저 시험한다. 예를 들어 이직률 높은 팀에 구조화된 잔류 면담을 도입하거나, 관리자 1:1 면담에 우선순위·장애물·성장·인정·고충이라는 틀을 준다. 일상적 습관을 건드리는 변화라 큰 투자 없이 검증할 수 있다.",
+          "en": "<b>1. Diagnose</b> — engagement surveys, turnover by team and manager, <span class=\"vw\" data-w=\"stay interview\">stay interviews</span> and exit interviews, internal mobility. Look for patterns, not isolated complaints.<br><b>2. Prioritise</b> — pick one or two areas with the largest gaps. Don't launch a company-wide culture programme before you know what needs to change.<br><b>3. Pilot and measure</b> — test with one team first: structured stay interviews for a high-turnover team, or a simple structure for manager one-on-ones covering priorities, obstacles, development, recognition and concerns. These touch everyday habits, so they can be validated cheaply."
+        }
+      },
+      {
+        "h": {
+          "ko": "주재원 관점에서",
+          "en": "For an expatriate HR role"
+        },
+        "body": {
+          "ko": "이 프레임워크는 해외 법인에서 특히 잘 맞는다. 본사에서 보이는 것은 이직률 숫자뿐이고, 그건 이미 늦은 지표이기 때문이다. 부임 초기에 <b>관리자별·근속연차별로 쪼갠 이직 데이터</b>와 몰입도를 맞춰 보는 것만으로도 어느 팀이 위험한지 드러난다. 다만 <span class=\"vw\" data-w=\"psychological safety\">psychological safety</span>는 문화권에 따라 표현 방식이 크게 다르다는 점은 감안해야 한다. 이견을 말하지 않는 것이 안전감 부족일 수도, 위계에 대한 규범일 수도 있다. 설문 문항을 그대로 번역해 쓰면 오독하기 쉽다.",
+          "en": "This framework travels well to an overseas subsidiary, because what head office sees is the turnover number — and that number is already late. In the first months, simply cutting turnover by manager and by tenure and laying engagement over it will show which teams are at risk. One caveat: <span class=\"vw\" data-w=\"psychological safety\">psychological safety</span> is expressed very differently across cultures. Silence in a meeting may mean a lack of safety, or it may be a norm about hierarchy. Translating survey items literally invites the wrong reading."
+        }
+      }
+    ],
+    "vocab": [
+      {
+        "w": "retention",
+        "pos": "n.",
+        "ko": "인재 유지 — 직원이 회사에 남아 있는 것",
+        "en": "Keeping employees at the organisation rather than losing them to turnover.",
+        "ex": "Turnover is a lagging indicator, so <b>retention</b> problems show up long after the culture caused them."
+      },
+      {
+        "w": "lagging indicator",
+        "pos": "n.",
+        "ko": "후행지표 — 문제가 쌓인 뒤에야 나타나는 지표",
+        "en": "A measure that only reflects a problem after it has already built up.",
+        "ex": "Treat turnover as a <b>lagging indicator</b> and watch engagement instead."
+      },
+      {
+        "w": "engagement",
+        "pos": "n.",
+        "ko": "몰입도 — 일에 쏟는 에너지와 심리적 관여 정도",
+        "en": "How much energy and commitment employees invest in their work.",
+        "ex": "A sharp drop in <b>engagement</b> on one team is worth investigating before anyone resigns."
+      },
+      {
+        "w": "psychological safety",
+        "pos": "n.",
+        "ko": "심리적 안전감 — 불이익 걱정 없이 말할 수 있는 상태",
+        "en": "The belief that one can raise concerns, ask questions and admit mistakes without unfair consequences.",
+        "ex": "Without <b>psychological safety</b>, you hear about problems only in the exit interview."
+      },
+      {
+        "w": "internal mobility",
+        "pos": "n.",
+        "ko": "사내 이동 — 승진·전배 등 조직 내부의 자리 이동",
+        "en": "Movement of employees into new roles inside the same organisation.",
+        "ex": "Falling <b>internal mobility</b> often precedes a rise in resignations."
+      },
+      {
+        "w": "tenure",
+        "pos": "n.",
+        "ko": "근속 기간 — 한 조직에서 일한 햇수",
+        "en": "The length of time an employee has been with an organisation.",
+        "ex": "Cut the turnover data by manager and by <b>tenure</b> before drawing conclusions."
+      },
+      {
+        "w": "stay interview",
+        "pos": "n.",
+        "ko": "잔류 면담 — 남아 있는 직원에게 미리 묻는 면담",
+        "en": "A conversation with a current employee about what keeps them and what might make them leave.",
+        "ex": "A <b>stay interview</b> asks the exit-interview questions while you can still act on the answers."
+      },
+      {
+        "w": "pay equity",
+        "pos": "n.",
+        "ko": "보상 형평성 — 동등한 일에 동등한 보상이 가는가",
+        "en": "Fairness and consistency in how pay is set across comparable roles and people.",
+        "ex": "Review <b>pay equity</b> against market benchmarks before claiming your pay practices are fair."
+      },
+      {
+        "w": "flight risk",
+        "pos": "n.",
+        "ko": "이탈 위험군 — 곧 떠날 가능성이 높은 인력",
+        "en": "An employee judged likely to leave the organisation soon.",
+        "ex": "Identifying <b>flight risk</b> early protects business continuity."
+      }
+    ]
+  }
+]

@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="매일 HR 논문 한 편을 한글·영문 요약으로 읽고, 본문에서 나온 단어를 그대로 단어장으로 넘겨 외우는 모바일 웹.">
+<meta name="description" content="매일 HR 아티클 한 편을 한글·영문 요약으로 읽고, 본문에서 나온 단어를 그대로 단어장으로 넘겨 외우는 모바일 웹.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="HR 논문">
+<meta name="apple-mobile-web-app-title" content="HR 아티클">
 <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131418" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-180.png">
+<title>HR 아티클 한 편</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   html{color-scheme:light dark}
   :root{
@@ -22,8 +24,6 @@
   img{max-width:100%}
   [hidden]{display:none!important}
 </style>
-<title>HR 논문 한 편</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root{
     --paper:#F7F6F2;
@@ -343,133 +343,59 @@
     *{transition:none!important;animation:none!important}
   }
 </style>
+<style>
+  .lib a.t:hover{color:var(--accent)}
+  .note a{color:var(--accent)}
+  .detail ul{margin-top:2px}
+  .detail .l-ko,.detail .l-en{font-size:13.8px;color:var(--ink-2);line-height:1.68}
+  .detail .l-ko b,.detail .l-en b{color:var(--ink)}
+</style>
 </head>
 <body>
 <div class="topbar">
   <div class="topbar-in">
-    <div class="brand">HR 논문 한 편 <span class="no">DAY 24</span></div>
-    <div class="streak">연속 <b>24</b>일 · 단어 <b>186</b></div>
+    <div class="brand">HR 아티클 한 편 <span class="no" id="dayNo">—</span></div>
+    <div class="streak" id="streak">불러오는 중…</div>
   </div>
 </div>
 
 <div class="wrap">
-
-  <!-- ================= TODAY ================= -->
   <section id="view-today">
     <div class="sec-head" style="margin-top:20px">
-      <span class="eyebrow">2026년 9월 17일 · 목요일</span>
-      <h2 class="sec">오늘의 논문</h2>
+      <span class="eyebrow" id="todayDate">&nbsp;</span>
+      <h2 class="sec">오늘의 아티클</h2>
     </div>
-
-    <article class="paper" data-lang="ko" id="paperCard">
-      <div class="paper-top">
-        <div class="venue">
-          <span class="tag">조직행동</span>
-          <span>Nature Human Behaviour</span>
-          <span>·</span>
-          <span>2022</span>
-        </div>
-        <h1>The effects of remote work on collaboration among information workers</h1>
-        <div class="authors">Longqi Yang, David Holtz, Sonia Jaffe <em>외 11인</em></div>
-      </div>
-
-      <div class="toggle-row">
-        <span class="eyebrow">요약</span>
-        <div class="seg" role="group" aria-label="요약 언어 선택">
-          <button type="button" id="btnKo" aria-pressed="true">한글</button>
-          <button type="button" id="btnEn" aria-pressed="false">ENG</button>
-        </div>
-      </div>
-
-      <div class="summary">
-        <p class="l-ko">마이크로소프트 직원 61,182명의 2020년 상반기 커뮤니케이션 데이터를 분석해, 전사 원격근무 전환이 협업 구조에 미친 영향을 인과적으로 추정했다. 전환 이후 조직의 협업 네트워크는 더 <b>고립되고 정적으로</b> 변했다. 부서를 가로지르는 약한 연결(weak tie)이 줄어들고, 이미 친밀한 소수와의 소통에 시간이 집중됐다. 동시에 실시간 소통(회의·통화)이 줄고 비동기 소통(이메일·메신저)이 늘면서, 새로운 정보를 얻고 전달하기가 더 어려워졌다.</p>
-        <p class="l-en">Analysing the communication data of 61,182 Microsoft employees over the first half of 2020, the authors causally estimate how the firm-wide shift to remote work reshaped collaboration. After the shift, the organisation's collaboration network became <b>more siloed and more static</b>. Cross-group weak ties decayed, and time concentrated on a smaller set of already-close contacts. At the same time, synchronous communication (meetings, calls) fell while asynchronous channels (email, instant messaging) rose, making it harder to acquire and transfer new information.</p>
-
-        <ul class="findings">
-          <li>
-            <span class="k">−25%</span>
-            <span class="v l-ko">부서 간 협업 시간 감소. 같은 팀 내 소통은 오히려 늘어 네트워크가 안으로 닫혔다.</span>
-            <span class="v l-en">Drop in cross-group collaboration hours. Within-team ties grew instead, closing the network inward.</span>
-          </li>
-          <li>
-            <span class="k">−11%</span>
-            <span class="v l-ko">기존 연결의 유지율 하락. 한 번 끊긴 약한 연결은 반년이 지나도 회복되지 않았다.</span>
-            <span class="v l-en">Fall in tie retention. Once a weak tie lapsed, it had not recovered six months later.</span>
-          </li>
-          <li>
-            <span class="k">+5.2h</span>
-            <span class="v l-ko">주당 비동기 소통 시간 증가. 반대로 동기식 소통은 주당 5시간 줄었다.</span>
-            <span class="v l-en">Added weekly hours of asynchronous communication, against a 5-hour weekly fall in synchronous time.</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="paper-foot">
-        <button type="button" class="btn primary" id="btnDetail">상세 보기</button>
-        <button type="button" class="btn" id="btnToVocab">단어 8개 <span style="opacity:.6">→</span></button>
-      </div>
-
-      <div class="detail" id="detail" hidden>
-        <div class="detail-in">
-          <h3><span class="l-ko">연구 방법</span><span class="l-en">Method</span></h3>
-          <p class="l-ko">2019년 12월부터 2020년 6월까지 미국 마이크로소프트 직원 61,182명의 이메일, 캘린더, 인스턴트 메시지, 통화 메타데이터를 수집했다. 코로나로 인한 전사 원격 전환을 자연실험으로 삼고, 계절성과 업무량 추세를 통제하기 위해 <button class="vw" data-w="difference-in-differences">difference-in-differences</button> 설계를 적용했다. 메시지 본문은 열람하지 않고 <button class="vw" data-w="metadata">metadata</button>만 사용했다.</p>
-          <p class="l-en">The authors collected email, calendar, instant-message and call metadata for 61,182 US Microsoft employees from December 2019 to June 2020. They treat the pandemic-driven firm-wide shift as a natural experiment and apply a <button class="vw" data-w="difference-in-differences">difference-in-differences</button> design to control for seasonality and workload trends. No message content was read — only <button class="vw" data-w="metadata">metadata</button>.</p>
-
-          <h3><span class="l-ko">주요 결과</span><span class="l-en">Findings</span></h3>
-          <ul class="l-ko">
-            <li>협업 네트워크가 더 <button class="vw" data-w="siloed">siloed</button>해졌다. 부서 간 연결은 줄고 부서 내 연결은 늘었다.</li>
-            <li>네트워크가 더 정적으로 변했다. 새 연결이 생기고 오래된 연결이 정리되는 자연스러운 흐름이 멈췄다.</li>
-            <li><button class="vw" data-w="asynchronous">asynchronous</button> 채널로의 이동이 뚜렷했다. 이는 복잡하고 모호한 정보를 전달하는 데 불리하다.</li>
-            <li>근무 시간은 늘었지만, 그 시간이 새로운 정보 습득으로 이어지지는 않았다.</li>
-          </ul>
-          <ul class="l-en">
-            <li>The collaboration network became more <button class="vw" data-w="siloed">siloed</button>: cross-group ties fell while within-group ties rose.</li>
-            <li>The network became more static — the usual churn of forming new ties and shedding old ones stalled.</li>
-            <li>A clear shift toward <button class="vw" data-w="asynchronous">asynchronous</button> channels, which are poorly suited to complex or ambiguous information.</li>
-            <li>Hours worked rose, but those hours did not translate into acquiring new information.</li>
-          </ul>
-
-          <h3><span class="l-ko">HR 시사점</span><span class="l-en">HR implications</span></h3>
-          <p class="l-ko">약한 연결은 조직의 <button class="vw" data-w="knowledge transfer">knowledge transfer</button>와 혁신이 일어나는 통로다. 원격·하이브리드 제도를 설계할 때 개인 생산성 지표만 보면 이 손실이 보이지 않는다. <button class="vw" data-w="cross-functional">cross-functional</button> 접점을 제도적으로 설계하고(로테이션, 정기 오프사이트, 프로젝트 기반 배치), <button class="vw" data-w="onboarding">onboarding</button> 단계의 신규 입사자에게 특히 주의해야 한다. 이들은 애초에 유지할 약한 연결 자체가 없다.</p>
-          <p class="l-en">Weak ties are the channel through which organisational <button class="vw" data-w="knowledge transfer">knowledge transfer</button> and innovation happen. When remote or hybrid policy is judged on individual productivity metrics alone, this loss stays invisible. Design <button class="vw" data-w="cross-functional">cross-functional</button> contact deliberately — rotations, recurring offsites, project-based staffing — and watch new hires in <button class="vw" data-w="onboarding">onboarding</button> especially closely: they have no weak ties to retain in the first place.</p>
-
-          <h3><span class="l-ko">한계</span><span class="l-en">Limitations</span></h3>
-          <p class="limits l-ko">단일 기업, 단일 국가, 지식노동자 표본이라 <button class="vw" data-w="generalisability">generalisability</button>에 제약이 있다. 또한 팬데믹이라는 <button class="vw" data-w="confound">confound</button>가 존재해, 원격근무 자체의 효과와 위기 상황의 효과를 완전히 분리하기 어렵다.</p>
-          <p class="limits l-en">A single firm, a single country and a knowledge-worker sample limit <button class="vw" data-w="generalisability">generalisability</button>. The pandemic is also a <button class="vw" data-w="confound">confound</button>: the effect of remote work itself cannot be cleanly separated from the effect of a crisis.</p>
-        </div>
-      </div>
-    </article>
-
-    <div class="note">
-      <b>목업 안내.</b> 논문·저자·수치는 실제 문헌(Yang et al., 2022, <i>Nature Human Behaviour</i>)을 따랐고, 요약문과 단어 데이터는 화면 확인용으로 작성한 샘플입니다. 상세 본문의 <span style="border-bottom:1.5px dotted var(--accent)">점선 단어</span>를 눌러 단어장 연동을 확인해 보세요.
+    <div id="todayBody">
+      <div class="note">데이터를 불러오는 중입니다…</div>
     </div>
   </section>
 
-  <!-- ================= VOCAB ================= -->
   <section id="view-vocab" hidden>
     <div class="sec-head" style="margin-top:20px">
-      <span class="eyebrow">DAY 24 · 오늘의 논문에서</span>
+      <span class="eyebrow" id="vocabFrom">&nbsp;</span>
       <h2 class="sec">단어장</h2>
     </div>
-
     <div class="vstats">
-      <div class="vstat"><div class="n" id="vTotal">8</div><div class="lbl">오늘 단어</div></div>
+      <div class="vstat"><div class="n" id="vTotal">0</div><div class="lbl">오늘 단어</div></div>
       <div class="vstat done"><div class="n" id="vKnown">0</div><div class="lbl">외움</div></div>
-      <div class="vstat"><div class="n" id="vCum">186</div><div class="lbl">누적</div></div>
+      <div class="vstat"><div class="n" id="vCum">0</div><div class="lbl">누적</div></div>
     </div>
-
     <div id="vocabList"></div>
   </section>
 
-  <!-- ================= LIBRARY ================= -->
   <section id="view-lib" hidden>
     <div class="sec-head" style="margin-top:20px">
-      <span class="eyebrow">지난 23편</span>
+      <span class="eyebrow" id="libCount">&nbsp;</span>
       <h2 class="sec">서재</h2>
     </div>
+    <div id="libDone"></div>
+    <hr class="rule">
+    <div class="sec-head" style="margin:0 0 6px">
+      <span class="eyebrow">아직 요약하지 않은 글</span>
+    </div>
+    <p class="note" style="margin-top:0" id="libPendingNote"></p>
     <ul class="lib" id="libList"></ul>
   </section>
-
 </div>
 
 <nav class="tabbar">
@@ -480,7 +406,7 @@
     </button>
     <button class="tab" role="tab" aria-selected="false" data-view="vocab">
       <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h6M7 14h4"/></svg>
-      단어장<span class="badge" id="tabBadge">8</span>
+      단어장<span class="badge" id="tabBadge" hidden>0</span>
     </button>
     <button class="tab" role="tab" aria-selected="false" data-view="lib">
       <svg viewBox="0 0 24 24"><path d="M5 4v16M9.5 4v16M14 5l4.5 15"/><path d="M3.5 20h17"/></svg>
@@ -493,108 +419,157 @@
 (function(){
   "use strict";
 
-  /* ---------------- data ---------------- */
-  var VOCAB = [
-    {w:"siloed", pos:"adj.", ko:"부서·조직이 서로 단절된, 칸막이가 쳐진",
-     en:"Separated into groups that do not share information or work together.",
-     ex:"The collaboration network became more <b>siloed</b> after the shift to remote work."},
-    {w:"asynchronous", pos:"adj.", ko:"비동기식의 — 실시간이 아닌, 각자 시간에 맞춰 주고받는",
-     en:"Not happening at the same time; participants respond on their own schedule.",
-     ex:"Employees moved toward <b>asynchronous</b> channels such as email and instant messaging."},
-    {w:"cross-functional", pos:"adj.", ko:"여러 직무·부서를 아우르는",
-     en:"Involving people from different departments or areas of expertise.",
-     ex:"Design <b>cross-functional</b> contact deliberately rather than leaving it to chance."},
-    {w:"onboarding", pos:"n.", ko:"신규 입사자 적응·정착 프로세스",
-     en:"The process of integrating a new employee into an organisation.",
-     ex:"Watch new hires in <b>onboarding</b> especially closely."},
-    {w:"knowledge transfer", pos:"n.", ko:"지식 이전 — 조직 내에서 노하우가 옮겨가는 것",
-     en:"The movement of know-how and expertise between people or units.",
-     ex:"Weak ties are the channel through which <b>knowledge transfer</b> happens."},
-    {w:"difference-in-differences", pos:"n.", ko:"이중차분법 — 처치 전후를 대조군과 비교하는 인과추론 기법",
-     en:"A quasi-experimental method comparing changes over time between a treated and an untreated group.",
-     ex:"They apply a <b>difference-in-differences</b> design to control for seasonality."},
-    {w:"confound", pos:"n. / v.", ko:"교란변수 — 인과 해석을 흐리는 제3의 요인",
-     en:"A variable that distorts the apparent relationship between cause and effect.",
-     ex:"The pandemic is a <b>confound</b>: remote work cannot be cleanly separated from crisis."},
-    {w:"generalisability", pos:"n.", ko:"일반화 가능성 — 결과를 다른 맥락에 적용할 수 있는 정도",
-     en:"The extent to which findings from one study apply to other settings or populations.",
-     ex:"A single firm and a single country limit <b>generalisability</b>."},
-    {w:"metadata", pos:"n.", ko:"메타데이터 — 내용이 아닌, 내용에 관한 데이터",
-     en:"Data describing other data, such as who sent a message and when, but not its content.",
-     ex:"No message content was read — only <b>metadata</b>."}
-  ];
+  var state = { lang: "ko", articles: [], index: [], meta: null, known: [], current: 0 };
 
-  var LIBRARY = [
-    {d:"09.16", t:"Pay transparency laws and the gender wage gap", v:"ILR Review · 2025", w:9},
-    {d:"09.15", t:"Algorithmic management and worker autonomy", v:"Academy of Management Journal · 2024", w:7},
-    {d:"09.12", t:"Skills-based hiring: signal or noise?", v:"Journal of Applied Psychology · 2025", w:11},
-    {d:"09.11", t:"Psychological safety across national cultures", v:"Organization Science · 2023", w:8},
-    {d:"09.10", t:"Expatriate adjustment and family support systems", v:"Journal of World Business · 2024", w:12},
-    {d:"09.09", t:"The four-day week: a multi-country field trial", v:"Nature Human Behaviour · 2025", w:6},
-    {d:"09.08", t:"Internal labour markets and voluntary attrition", v:"Strategic Management Journal · 2024", w:10}
-  ];
-
-  /* ---------------- storage ---------------- */
-  function load(k, fb){
-    try{ var v = localStorage.getItem(k); return v===null ? fb : JSON.parse(v); }
-    catch(e){ return fb; }
-  }
+  /* ---------- 저장소 ---------- */
+  function load(k, fb){ try{ var v = localStorage.getItem(k); return v === null ? fb : JSON.parse(v); }catch(e){ return fb; } }
   function save(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 
-  var lang  = load("hrp.lang", "ko");
-  var known = load("hrp.known", []);
-  if(!Array.isArray(known)) known = [];
+  state.lang  = load("hrp.lang", "ko");
+  state.known = load("hrp.known", []);
+  if (!Array.isArray(state.known)) state.known = [];
 
-  /* ---------------- language ---------------- */
-  var card  = document.getElementById("paperCard");
-  var btnKo = document.getElementById("btnKo");
-  var btnEn = document.getElementById("btnEn");
+  var esc = function(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  };
+  var isKnown = function(w){ return state.known.indexOf(w) !== -1; };
+
+  /* ---------- 데이터 ---------- */
+  async function getJSON(path, fallback){
+    try{
+      var res = await fetch(path, { cache: "no-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return await res.json();
+    }catch(e){
+      console.warn("불러오기 실패: " + path, e);
+      return fallback;
+    }
+  }
+
+  /* ---------- 오늘 ---------- */
+  function renderToday(){
+    var el = document.getElementById("todayBody");
+    var a = state.articles[state.current];
+
+    if (!a){
+      el.innerHTML =
+        '<div class="note"><b>아직 요약된 글이 없습니다.</b><br>' +
+        'GitHub Actions 의 <b>자료 수집</b> 워크플로를 실행하면 새 글이 대기열에 들어가고, ' +
+        'Claude Code 세션에서 요약하면 여기에 나타납니다.' +
+        (state.index.length ? '<br><br>수집된 글 목록 <b>' + state.index.length + '건</b>은 서재 탭에서 볼 수 있습니다.' : '') +
+        '</div>';
+      document.getElementById("todayDate").textContent = "";
+      return;
+    }
+
+    document.getElementById("todayDate").textContent = a.published + " · " + a.sourceName;
+    document.getElementById("dayNo").textContent = "DAY " + state.articles.length;
+
+    var findings = (a.findings || []).map(function(f){
+      return '<li><span class="k">' + esc(f.k) + '</span>' +
+             '<span class="v l-ko">' + f.ko + '</span>' +
+             '<span class="v l-en">' + f.en + '</span></li>';
+    }).join("");
+
+    var detail = (a.detail || []).map(function(s){
+      return '<h3><span class="l-ko">' + esc(s.h.ko) + '</span><span class="l-en">' + esc(s.h.en) + '</span></h3>' +
+             '<div class="l-ko">' + s.body.ko + '</div>' +
+             '<div class="l-en">' + s.body.en + '</div>';
+    }).join("");
+
+    el.innerHTML =
+      '<article class="paper" data-lang="' + state.lang + '" id="paperCard">' +
+        '<div class="paper-top">' +
+          '<div class="venue">' +
+            (a.category ? '<span class="tag">' + esc(a.category) + '</span>' : "") +
+            '<span>' + esc(a.sourceName) + '</span><span>·</span><span>' + esc(a.published) + '</span>' +
+          '</div>' +
+          '<h1>' + esc(a.title) + '</h1>' +
+        '</div>' +
+
+        '<div class="toggle-row">' +
+          '<span class="eyebrow">요약</span>' +
+          '<div class="seg" role="group" aria-label="요약 언어 선택">' +
+            '<button type="button" id="btnKo" aria-pressed="' + (state.lang === "ko") + '">한글</button>' +
+            '<button type="button" id="btnEn" aria-pressed="' + (state.lang === "en") + '">ENG</button>' +
+          '</div>' +
+        '</div>' +
+
+        '<div class="summary">' +
+          '<p class="l-ko">' + a.summary.ko + '</p>' +
+          '<p class="l-en">' + a.summary.en + '</p>' +
+          (findings ? '<ul class="findings">' + findings + '</ul>' : "") +
+        '</div>' +
+
+        '<div class="paper-foot">' +
+          '<button type="button" class="btn primary" id="btnDetail">상세 보기</button>' +
+          '<button type="button" class="btn" id="btnToVocab">단어 ' + (a.vocab || []).length + '개 <span style="opacity:.6">→</span></button>' +
+        '</div>' +
+
+        (detail ? '<div class="detail" id="detail" hidden><div class="detail-in">' + detail + '</div></div>' : "") +
+      '</article>' +
+
+      '<div class="note">원문은 저장하지 않습니다. 위 요약과 단어는 이 글을 읽고 직접 작성한 것이며, ' +
+      '전문은 <a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.sourceName) + ' 원문</a>에서 보세요.</div>';
+
+    document.getElementById("btnKo").addEventListener("click", function(){ setLang("ko"); });
+    document.getElementById("btnEn").addEventListener("click", function(){ setLang("en"); });
+    document.getElementById("btnToVocab").addEventListener("click", function(){ go("vocab"); });
+
+    var detailEl = document.getElementById("detail");
+    var btnDetail = document.getElementById("btnDetail");
+    if (detailEl){
+      btnDetail.addEventListener("click", function(){
+        var open = !detailEl.hidden;
+        detailEl.hidden = open;
+        btnDetail.textContent = open ? "상세 보기" : "접기";
+        if (!open) detailEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    } else {
+      btnDetail.hidden = true;
+    }
+  }
 
   function setLang(v){
-    lang = v;
-    card.setAttribute("data-lang", v);
-    btnKo.setAttribute("aria-pressed", String(v === "ko"));
-    btnEn.setAttribute("aria-pressed", String(v === "en"));
+    state.lang = v;
+    var card = document.getElementById("paperCard");
+    if (card) card.setAttribute("data-lang", v);
+    var ko = document.getElementById("btnKo"), en = document.getElementById("btnEn");
+    if (ko) ko.setAttribute("aria-pressed", String(v === "ko"));
+    if (en) en.setAttribute("aria-pressed", String(v === "en"));
     save("hrp.lang", v);
   }
-  btnKo.addEventListener("click", function(){ setLang("ko"); });
-  btnEn.addEventListener("click", function(){ setLang("en"); });
-  setLang(lang);
 
-  /* ---------------- detail ---------------- */
-  var detail = document.getElementById("detail");
-  var btnDetail = document.getElementById("btnDetail");
-  btnDetail.addEventListener("click", function(){
-    var open = !detail.hidden;
-    detail.hidden = open;
-    btnDetail.textContent = open ? "상세 보기" : "접기";
-    if(!open) detail.scrollIntoView({behavior:"smooth", block:"start"});
-  });
-
-  /* ---------------- vocab render ---------------- */
-  var list = document.getElementById("vocabList");
-
-  function isKnown(w){ return known.indexOf(w) !== -1; }
-
-  function render(){
+  /* ---------- 단어장 ---------- */
+  function renderVocab(){
+    var a = state.articles[state.current];
+    var list = document.getElementById("vocabList");
+    var vocab = (a && a.vocab) || [];
     list.innerHTML = "";
-    VOCAB.forEach(function(item, i){
+
+    document.getElementById("vocabFrom").textContent = a ? a.title.slice(0, 48) + " 에서" : "";
+
+    if (!vocab.length){
+      list.innerHTML = '<div class="note">아직 단어가 없습니다.</div>';
+      stats();
+      return;
+    }
+
+    vocab.forEach(function(item, i){
       var k = isKnown(item.w);
       var el = document.createElement("div");
       el.className = "card" + (k ? " known" : "");
       el.id = "v-" + i;
       el.innerHTML =
         '<button type="button" class="card-head" aria-expanded="false">' +
-          '<span><span class="term">' + item.w + '</span>' +
-          '<span class="pos">' + item.pos + '</span></span>' +
+          '<span><span class="term">' + esc(item.w) + '</span><span class="pos">' + esc(item.pos) + '</span></span>' +
           '<span class="chev">' + (k ? "✓" : "▸") + '</span>' +
         '</button>' +
         '<div class="card-body" hidden>' +
-          '<div class="def-ko">' + item.ko + '</div>' +
-          '<div class="def-en">' + item.en + '</div>' +
-          '<div class="ex">' + item.ex +
-            '<span class="src">Yang et al. (2022) · 오늘의 논문</span>' +
-          '</div>' +
+          '<div class="def-ko">' + esc(item.ko) + '</div>' +
+          '<div class="def-en">' + esc(item.en) + '</div>' +
+          '<div class="ex">' + item.ex + '<span class="src">' + esc(a.sourceName) + ' · ' + esc(a.published) + '</span></div>' +
           '<div class="card-actions">' +
             '<button type="button" class="mini again">다시 볼래요</button>' +
             '<button type="button" class="mini yes">외웠어요</button>' +
@@ -609,92 +584,129 @@
         el.classList.toggle("open", !open);
         head.setAttribute("aria-expanded", String(!open));
       });
-
       el.querySelector(".mini.yes").addEventListener("click", function(){
-        if(!isKnown(item.w)) known.push(item.w);
-        save("hrp.known", known);
-        body.hidden = true; el.classList.remove("open");
-        head.setAttribute("aria-expanded", "false");
-        render(); stats();
+        if (!isKnown(item.w)) state.known.push(item.w);
+        save("hrp.known", state.known);
+        renderVocab(); stats();
       });
       el.querySelector(".mini.again").addEventListener("click", function(){
-        known = known.filter(function(x){ return x !== item.w; });
-        save("hrp.known", known);
-        body.hidden = true; el.classList.remove("open");
-        head.setAttribute("aria-expanded", "false");
-        render(); stats();
+        state.known = state.known.filter(function(x){ return x !== item.w; });
+        save("hrp.known", state.known);
+        renderVocab(); stats();
       });
-
       list.appendChild(el);
     });
+    stats();
   }
 
   function stats(){
-    var todays = VOCAB.filter(function(v){ return isKnown(v.w); }).length;
-    document.getElementById("vTotal").textContent = VOCAB.length;
-    document.getElementById("vKnown").textContent = todays;
-    document.getElementById("vCum").textContent = 186 + todays;
-    var left = VOCAB.length - todays;
+    var a = state.articles[state.current];
+    var vocab = (a && a.vocab) || [];
+    var done = vocab.filter(function(v){ return isKnown(v.w); }).length;
+    document.getElementById("vTotal").textContent = vocab.length;
+    document.getElementById("vKnown").textContent = done;
+    document.getElementById("vCum").textContent = state.known.length;
+    var left = vocab.length - done;
     var badge = document.getElementById("tabBadge");
     badge.textContent = left;
     badge.hidden = left === 0;
+    document.getElementById("streak").innerHTML =
+      "요약 <b>" + state.articles.length + "</b>편 · 단어 <b>" + state.known.length + "</b>";
   }
 
-  /* ---------------- library ---------------- */
-  var lib = document.getElementById("libList");
-  LIBRARY.forEach(function(p){
-    var li = document.createElement("li");
-    li.innerHTML =
-      '<span class="date">' + p.d + '</span>' +
-      '<span><span class="t">' + p.t + '</span>' +
-      '<span class="m">' + p.v + '<span class="dot">·</span>' +
-      '<span class="w">단어 ' + p.w + '</span></span></span>';
-    lib.appendChild(li);
-  });
+  /* ---------- 서재 ---------- */
+  function renderLib(){
+    var done = document.getElementById("libDone");
+    document.getElementById("libCount").textContent =
+      "요약 " + state.articles.length + "편 · 수집 " + state.index.length + "건";
 
-  /* ---------------- views ---------------- */
+    done.innerHTML = state.articles.length
+      ? '<ul class="lib">' + state.articles.map(function(a, i){
+          return '<li data-i="' + i + '" style="cursor:pointer">' +
+            '<span class="date">' + esc((a.published || "").slice(5).replace("-", ".")) + '</span>' +
+            '<span><span class="t">' + esc(a.title) + '</span>' +
+            '<span class="m">' + esc(a.sourceName) + '<span class="dot">·</span>' +
+            '<span class="w">단어 ' + (a.vocab || []).length + '</span></span></span></li>';
+        }).join("") + '</ul>'
+      : '<p class="note" style="margin-top:0">요약된 글이 아직 없습니다.</p>';
+
+    done.querySelectorAll("li[data-i]").forEach(function(li){
+      li.addEventListener("click", function(){
+        state.current = +li.dataset.i;
+        renderToday(); renderVocab(); go("today");
+      });
+    });
+
+    var pending = state.index.filter(function(e){
+      return !state.articles.some(function(a){ return a.url === e.url; });
+    });
+    document.getElementById("libPendingNote").textContent =
+      pending.length + "건이 수집돼 있습니다. 최근 40건만 표시합니다. 제목을 눌러 원문으로 갑니다.";
+
+    document.getElementById("libList").innerHTML = pending.slice(0, 40).map(function(e){
+      return '<li><span class="date">' + esc((e.published || "").slice(5).replace("-", ".")) + '</span>' +
+        '<span><a class="t" href="' + esc(e.url) + '" target="_blank" rel="noopener" ' +
+        'style="color:inherit;text-decoration:none;display:block">' + esc(e.title) + '</a>' +
+        '<span class="m">' + esc(e.source.toUpperCase()) + '</span></span></li>';
+    }).join("");
+  }
+
+  /* ---------- 화면 전환 ---------- */
   var views = {
     today: document.getElementById("view-today"),
     vocab: document.getElementById("view-vocab"),
-    lib:   document.getElementById("view-lib")
+    lib:   document.getElementById("view-lib"),
   };
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
 
   function go(name){
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== name); });
     tabs.forEach(function(t){ t.setAttribute("aria-selected", String(t.dataset.view === name)); });
-    window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
+    window.scrollTo(0, 0);
   }
-  tabs.forEach(function(t){
-    t.addEventListener("click", function(){ go(t.dataset.view); });
-  });
+  tabs.forEach(function(t){ t.addEventListener("click", function(){ go(t.dataset.view); }); });
 
-  document.getElementById("btnToVocab").addEventListener("click", function(){ go("vocab"); });
-
-  /* inline vocab words inside the detail text */
+  // 상세 본문 안의 단어를 누르면 단어장으로 이동하며 해당 카드를 편다.
   document.addEventListener("click", function(e){
     var b = e.target.closest ? e.target.closest(".vw") : null;
-    if(!b) return;
-    var w = b.dataset.w;
-    var idx = -1;
-    VOCAB.forEach(function(v,i){ if(v.w === w) idx = i; });
-    if(idx < 0) return;
+    if (!b) return;
+    var a = state.articles[state.current];
+    if (!a) return;
+    var idx = (a.vocab || []).findIndex(function(v){ return v.w === b.dataset.w; });
+    if (idx < 0) return;
     go("vocab");
     var el = document.getElementById("v-" + idx);
-    if(!el) return;
-    var head = el.querySelector(".card-head");
-    var body = el.querySelector(".card-body");
-    if(body.hidden){
+    if (!el) return;
+    var head = el.querySelector(".card-head"), body = el.querySelector(".card-body");
+    if (body.hidden){
       body.hidden = false;
       el.classList.add("open");
       head.setAttribute("aria-expanded", "true");
     }
-    el.scrollIntoView({behavior:"smooth", block:"center"});
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
-  render();
-  stats();
+  /* ---------- 시작 ---------- */
+  (async function start(){
+    var results = await Promise.all([
+      getJSON("data/articles.json", []),
+      getJSON("data/index.json", []),
+      getJSON("data/meta.json", null),
+    ]);
+    state.articles = results[0] || [];
+    state.index    = results[1] || [];
+    state.meta     = results[2];
+
+    // 최신 글이 앞에 오도록
+    state.articles.sort(function(x, y){ return (y.published || "").localeCompare(x.published || ""); });
+
+    renderToday();
+    renderVocab();
+    renderLib();
+    stats();
+  })();
 })();
 </script>
+
 </body>
 </html>
