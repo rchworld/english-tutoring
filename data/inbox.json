@@ -1,5 +1,18 @@
 [
   {
+    "id": "aihr-hr-trends-2027",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "HR Trends 2027: Work, Redesigned",
+    "url": "https://www.aihr.com/blog/hr-trends-2027/",
+    "category": "General HR",
+    "published": "2026-09-18",
+    "collectedAt": "2026-09-20",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-trends-2027.md",
+    "chars": 40528
+  },
+  {
     "id": "aihr-strategic-workforce-planning",
     "source": "aihr",
     "sourceName": "AIHR",
