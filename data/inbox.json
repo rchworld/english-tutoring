@@ -1,5 +1,18 @@
 [
   {
+    "id": "aihr-payroll-metrics",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "15 Payroll Metrics and KPIs Every HR Professional Should Track",
+    "url": "https://www.aihr.com/blog/payroll-metrics/",
+    "category": "Articles",
+    "published": "2026-09-21",
+    "collectedAt": "2026-09-21",
+    "status": "pending",
+    "raw": "data/raw/aihr-payroll-metrics.md",
+    "chars": 14621
+  },
+  {
     "id": "aihr-hr-trends-2027",
     "source": "aihr",
     "sourceName": "AIHR",
