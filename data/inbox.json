@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-hr-trends",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "11 HR Trends for 2027: Work, Redesigned",
+    "url": "https://www.aihr.com/blog/hr-trends/",
+    "category": "Articles",
+    "published": "2026-09-22",
+    "collectedAt": "2026-09-22",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-trends.md",
+    "chars": 41849
+  },
+  {
+    "id": "aihr-global-hr-certification",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "15 Best Global HR Certifications To Enroll In [2026 Edition]",
+    "url": "https://www.aihr.com/blog/global-hr-certification/",
+    "category": "Articles",
+    "published": "2026-09-22",
+    "collectedAt": "2026-09-22",
+    "status": "pending",
+    "raw": "data/raw/aihr-global-hr-certification.md",
+    "chars": 23960
+  },
+  {
     "id": "aihr-payroll-metrics",
     "source": "aihr",
     "sourceName": "AIHR",
