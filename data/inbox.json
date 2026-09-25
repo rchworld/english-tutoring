@@ -1,5 +1,18 @@
 [
   {
+    "id": "aihr-hr-tech-stack",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "HR Tech Stack Guide 2026, With Categories, Tools, and Examples",
+    "url": "https://www.aihr.com/blog/hr-tech-stack/",
+    "category": "Articles",
+    "published": "2026-09-25",
+    "collectedAt": "2026-09-25",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-tech-stack.md",
+    "chars": 23827
+  },
+  {
     "id": "aihr-hr-recertification-courses",
     "source": "aihr",
     "sourceName": "AIHR",
