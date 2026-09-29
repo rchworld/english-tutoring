@@ -1,5 +1,18 @@
 [
   {
+    "id": "aihr-ai-culture",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "How AI Impacts the Workplace & How To Build an AI Culture",
+    "url": "https://www.aihr.com/blog/ai-culture/",
+    "category": "AI in HR",
+    "published": "2026-09-28",
+    "collectedAt": "2026-09-29",
+    "status": "pending",
+    "raw": "data/raw/aihr-ai-culture.md",
+    "chars": 16038
+  },
+  {
     "id": "aihr-hr-tech-stack",
     "source": "aihr",
     "sourceName": "AIHR",
