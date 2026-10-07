@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-hr-leader-lessons",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "7 Lessons Every HR Leader Should Take Into 2027",
+    "url": "https://www.aihr.com/blog/hr-leader-lessons/",
+    "category": "Articles",
+    "published": "2026-10-06",
+    "collectedAt": "2026-10-07",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-leader-lessons.md",
+    "chars": 18903
+  },
+  {
+    "id": "aihr-hr-annual-calendar",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "HR Annual Calendar 2027: Key Dates and Free Template",
+    "url": "https://www.aihr.com/blog/hr-annual-calendar/",
+    "category": "Articles",
+    "published": "2026-10-06",
+    "collectedAt": "2026-10-07",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-annual-calendar.md",
+    "chars": 23144
+  },
+  {
     "id": "aihr-how-to-support-mental-health-in-the-workplace",
     "source": "aihr",
     "sourceName": "AIHR",
