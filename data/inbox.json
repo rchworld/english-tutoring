@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-how-to-calculate-employee-turnover-rate",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "How to Calculate Employee Turnover Rate: Formulas and Excel Template",
+    "url": "https://www.aihr.com/blog/how-to-calculate-employee-turnover-rate/",
+    "category": "Articles",
+    "published": "2026-10-12",
+    "collectedAt": "2026-10-13",
+    "status": "pending",
+    "raw": "data/raw/aihr-how-to-calculate-employee-turnover-rate.md",
+    "chars": 17526
+  },
+  {
+    "id": "aihr-ai-terms-for-hr",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "50 AI Terms for HR You Should Know + Practical HR Examples",
+    "url": "https://www.aihr.com/blog/ai-terms-for-hr/",
+    "category": "AI in HR",
+    "published": "2026-10-12",
+    "collectedAt": "2026-10-13",
+    "status": "pending",
+    "raw": "data/raw/aihr-ai-terms-for-hr.md",
+    "chars": 24446
+  },
+  {
     "id": "aihr-employment-verification-letter-template",
     "source": "aihr",
     "sourceName": "AIHR",
