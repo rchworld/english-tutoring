@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-overtime-pay-calculator",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Overtime Pay Calculator for HR + Free Excel Template",
+    "url": "https://www.aihr.com/blog/overtime-pay-calculator/",
+    "category": "Articles",
+    "published": "2026-10-21",
+    "collectedAt": "2026-10-21",
+    "status": "pending",
+    "raw": "data/raw/aihr-overtime-pay-calculator.md",
+    "chars": 16460
+  },
+  {
+    "id": "aihr-best-hr-certification-for-beginners",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "What Is the Best HR Certification for Beginners?",
+    "url": "https://www.aihr.com/blog/best-hr-certification-for-beginners/",
+    "category": "Articles",
+    "published": "2026-10-21",
+    "collectedAt": "2026-10-21",
+    "status": "pending",
+    "raw": "data/raw/aihr-best-hr-certification-for-beginners.md",
+    "chars": 27356
+  },
+  {
     "id": "aihr-recruitment-tools-overview",
     "source": "aihr",
     "sourceName": "AIHR",
