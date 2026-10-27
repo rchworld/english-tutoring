@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-human-resource-management-courses",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "6 Human Resource Management Courses to Help You Excel in Your Career",
+    "url": "https://www.aihr.com/blog/human-resource-management-courses/",
+    "category": "Articles",
+    "published": "2026-10-26",
+    "collectedAt": "2026-10-27",
+    "status": "pending",
+    "raw": "data/raw/aihr-human-resource-management-courses.md",
+    "chars": 18950
+  },
+  {
+    "id": "aihr-employee-appreciation-gifts",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "8 Employee Appreciation Gift Ideas for Meaningful Recognition",
+    "url": "https://www.aihr.com/blog/employee-appreciation-gifts/",
+    "category": "Articles",
+    "published": "2026-10-26",
+    "collectedAt": "2026-10-27",
+    "status": "pending",
+    "raw": "data/raw/aihr-employee-appreciation-gifts.md",
+    "chars": 12659
+  },
+  {
     "id": "aihr-30-60-90-day-plan-template",
     "source": "aihr",
     "sourceName": "AIHR",
