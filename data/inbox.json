@@ -1,5 +1,44 @@
 [
   {
+    "id": "aihr-human-resources-training",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "15 Best HR Training Programs for 2027",
+    "url": "https://www.aihr.com/blog/human-resources-training/",
+    "category": "Articles",
+    "published": "2026-10-29",
+    "collectedAt": "2026-10-30",
+    "status": "pending",
+    "raw": "data/raw/aihr-human-resources-training.md",
+    "chars": 33996
+  },
+  {
+    "id": "aihr-what-training-is-needed-for-human-resources",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "What Training Is Needed for Human Resources? Your Complete Guide",
+    "url": "https://www.aihr.com/blog/what-training-is-needed-for-human-resources/",
+    "category": "Articles",
+    "published": "2026-10-29",
+    "collectedAt": "2026-10-30",
+    "status": "pending",
+    "raw": "data/raw/aihr-what-training-is-needed-for-human-resources.md",
+    "chars": 19240
+  },
+  {
+    "id": "aihr-easy-hr-certifications",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "5 Easy HR Certifications & Certificate Programs for 2026",
+    "url": "https://www.aihr.com/blog/easy-hr-certifications/",
+    "category": "Articles",
+    "published": "2026-10-29",
+    "collectedAt": "2026-10-30",
+    "status": "pending",
+    "raw": "data/raw/aihr-easy-hr-certifications.md",
+    "chars": 23700
+  },
+  {
     "id": "aihr-the-best-practical-hr-courses",
     "source": "aihr",
     "sourceName": "AIHR",
