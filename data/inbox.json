@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-hr-ai-tools",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "48 HR AI Tools: The Ultimate List for HR Leaders",
+    "url": "https://www.aihr.com/blog/hr-ai-tools/",
+    "category": "AI for HR Teams",
+    "published": "2026-10-30",
+    "collectedAt": "2026-10-31",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-ai-tools.md",
+    "chars": 18239
+  },
+  {
+    "id": "aihr-best-talent-acquisition-certification",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "17 Best Talent Acquisition Certifications & Courses To Build Your Skills",
+    "url": "https://www.aihr.com/blog/best-talent-acquisition-certification/",
+    "category": "Articles",
+    "published": "2026-10-30",
+    "collectedAt": "2026-10-31",
+    "status": "pending",
+    "raw": "data/raw/aihr-best-talent-acquisition-certification.md",
+    "chars": 24758
+  },
+  {
     "id": "aihr-human-resources-training",
     "source": "aihr",
     "sourceName": "AIHR",
