@@ -1,5 +1,44 @@
 [
   {
+    "id": "aihr-online-hr-courses",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "13 Best Online HR Courses To Take in 2026",
+    "url": "https://www.aihr.com/blog/online-hr-courses/",
+    "category": "Articles",
+    "published": "2026-11-02",
+    "collectedAt": "2026-11-03",
+    "status": "pending",
+    "raw": "data/raw/aihr-online-hr-courses.md",
+    "chars": 25196
+  },
+  {
+    "id": "aihr-how-to-become-a-recruiter",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "How To Become a Recruiter in 8 Steps (2026 Guide)",
+    "url": "https://www.aihr.com/blog/how-to-become-a-recruiter/",
+    "category": "Articles",
+    "published": "2026-11-02",
+    "collectedAt": "2026-11-03",
+    "status": "pending",
+    "raw": "data/raw/aihr-how-to-become-a-recruiter.md",
+    "chars": 19325
+  },
+  {
+    "id": "aihr-recruiting-certifications",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "9 Best Recruiting Certifications & Certificate Programs for 2026",
+    "url": "https://www.aihr.com/blog/recruiting-certifications/",
+    "category": "Articles",
+    "published": "2026-11-02",
+    "collectedAt": "2026-11-03",
+    "status": "pending",
+    "raw": "data/raw/aihr-recruiting-certifications.md",
+    "chars": 29128
+  },
+  {
     "id": "aihr-hr-ai-tools",
     "source": "aihr",
     "sourceName": "AIHR",
