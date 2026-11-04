@@ -1,5 +1,18 @@
 [
   {
+    "id": "aihr-raci-template",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "RACI Template & Ultimate 2026 Guide to the RACI Matrix [+Free Download]",
+    "url": "https://www.aihr.com/blog/raci-template/",
+    "category": "Articles",
+    "published": "2026-11-03",
+    "collectedAt": "2026-11-04",
+    "status": "pending",
+    "raw": "data/raw/aihr-raci-template.md",
+    "chars": 24016
+  },
+  {
     "id": "aihr-online-hr-courses",
     "source": "aihr",
     "sourceName": "AIHR",
