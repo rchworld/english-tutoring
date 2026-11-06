@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-best-compensation-and-benefits-certifications",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Best Compensation and Benefits Certifications: How To Choose the Right One for Your HR Career",
+    "url": "https://www.aihr.com/blog/best-compensation-and-benefits-certifications/",
+    "category": "Articles",
+    "published": "2026-11-05",
+    "collectedAt": "2026-11-06",
+    "status": "pending",
+    "raw": "data/raw/aihr-best-compensation-and-benefits-certifications.md",
+    "chars": 12955
+  },
+  {
+    "id": "aihr-claude-in-excel-for-hr",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Claude for Excel: How to Use It for HR Analytics",
+    "url": "https://www.aihr.com/blog/claude-in-excel-for-hr/",
+    "category": "AI in HR",
+    "published": "2026-11-05",
+    "collectedAt": "2026-11-06",
+    "status": "pending",
+    "raw": "data/raw/aihr-claude-in-excel-for-hr.md",
+    "chars": 11879
+  },
+  {
     "id": "aihr-raci-template",
     "source": "aihr",
     "sourceName": "AIHR",
