@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-employee-engagement-strategies",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "21 Best Employee Engagement Strategies To Use [In 2026]",
+    "url": "https://www.aihr.com/blog/employee-engagement-strategies/",
+    "category": "Articles",
+    "published": "2026-11-06",
+    "collectedAt": "2026-11-07",
+    "status": "pending",
+    "raw": "data/raw/aihr-employee-engagement-strategies.md",
+    "chars": 26740
+  },
+  {
+    "id": "aihr-best-hr-generalist-certifications",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Best HR Generalist Certifications: Which One Fits Your Next Career Move?",
+    "url": "https://www.aihr.com/blog/best-hr-generalist-certifications/",
+    "category": "Articles",
+    "published": "2026-11-06",
+    "collectedAt": "2026-11-07",
+    "status": "pending",
+    "raw": "data/raw/aihr-best-hr-generalist-certifications.md",
+    "chars": 13008
+  },
+  {
     "id": "aihr-best-compensation-and-benefits-certifications",
     "source": "aihr",
     "sourceName": "AIHR",
