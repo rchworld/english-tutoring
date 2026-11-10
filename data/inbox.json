@@ -1,5 +1,18 @@
 [
   {
+    "id": "aihr-ai-fatigue",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Why AI Fatigue Is a Work Design Problem & What HR Should Do",
+    "url": "https://www.aihr.com/blog/ai-fatigue/",
+    "category": "AI for HR Teams",
+    "published": "2026-11-09",
+    "collectedAt": "2026-11-10",
+    "status": "pending",
+    "raw": "data/raw/aihr-ai-fatigue.md",
+    "chars": 14557
+  },
+  {
     "id": "aihr-employee-engagement-strategies",
     "source": "aihr",
     "sourceName": "AIHR",
