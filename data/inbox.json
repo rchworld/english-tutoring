@@ -1,5 +1,44 @@
 [
   {
+    "id": "aihr-ai-hackathon-ideas",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "15+ AI Hackathon Ideas for HR Teams",
+    "url": "https://www.aihr.com/blog/ai-hackathon-ideas/",
+    "category": "AI for HR Teams",
+    "published": "2026-11-10",
+    "collectedAt": "2026-11-11",
+    "status": "pending",
+    "raw": "data/raw/aihr-ai-hackathon-ideas.md",
+    "chars": 17272
+  },
+  {
+    "id": "aihr-which-course-is-best-for-hr-management",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Which Course Is Best for Human Resource Management? 8 Options",
+    "url": "https://www.aihr.com/blog/which-course-is-best-for-hr-management/",
+    "category": "Articles",
+    "published": "2026-11-10",
+    "collectedAt": "2026-11-11",
+    "status": "pending",
+    "raw": "data/raw/aihr-which-course-is-best-for-hr-management.md",
+    "chars": 20300
+  },
+  {
+    "id": "aihr-how-different-generations-perceive-hr",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "How Different Generations Perceive HR (And What HR Can Learn)",
+    "url": "https://www.aihr.com/blog/how-different-generations-perceive-hr/",
+    "category": "Articles",
+    "published": "2026-11-10",
+    "collectedAt": "2026-11-11",
+    "status": "pending",
+    "raw": "data/raw/aihr-how-different-generations-perceive-hr.md",
+    "chars": 15219
+  },
+  {
     "id": "aihr-ai-fatigue",
     "source": "aihr",
     "sourceName": "AIHR",
