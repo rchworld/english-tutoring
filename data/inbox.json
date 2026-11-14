@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-hr-courses-for-beginners",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "8 Best HR Courses for Beginners for 2027: Online Options Compared",
+    "url": "https://www.aihr.com/blog/hr-courses-for-beginners/",
+    "category": "Articles",
+    "published": "2026-11-13",
+    "collectedAt": "2026-11-14",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-courses-for-beginners.md",
+    "chars": 16250
+  },
+  {
+    "id": "aihr-job-analysis",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Job Analysis: A Practical Guide [FREE Templates]",
+    "url": "https://www.aihr.com/blog/job-analysis/",
+    "category": "Articles",
+    "published": "2026-11-13",
+    "collectedAt": "2026-11-14",
+    "status": "pending",
+    "raw": "data/raw/aihr-job-analysis.md",
+    "chars": 26023
+  },
+  {
     "id": "aihr-ai-hackathon-ideas",
     "source": "aihr",
     "sourceName": "AIHR",
