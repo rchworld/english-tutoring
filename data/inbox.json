@@ -1,5 +1,44 @@
 [
   {
+    "id": "aihr-employee-training-tools",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "20 Top Employee Training Tools To Take Your Workforce to the Next Level",
+    "url": "https://www.aihr.com/blog/employee-training-tools/",
+    "category": "Articles",
+    "published": "2026-11-16",
+    "collectedAt": "2026-11-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-employee-training-tools.md",
+    "chars": 15006
+  },
+  {
+    "id": "aihr-best-hr-certifications",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "12 Best HR Certifications To Elevate Your Career in 2026",
+    "url": "https://www.aihr.com/blog/best-hr-certifications/",
+    "category": "Articles",
+    "published": "2026-11-16",
+    "collectedAt": "2026-11-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-best-hr-certifications.md",
+    "chars": 34210
+  },
+  {
+    "id": "aihr-9-box-grid",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "9 Box Grid: A Practitioner’s Guide [FREE Template]",
+    "url": "https://www.aihr.com/blog/9-box-grid/",
+    "category": "Articles",
+    "published": "2026-11-16",
+    "collectedAt": "2026-11-17",
+    "status": "pending",
+    "raw": "data/raw/aihr-9-box-grid.md",
+    "chars": 38509
+  },
+  {
     "id": "aihr-hr-courses-for-beginners",
     "source": "aihr",
     "sourceName": "AIHR",
