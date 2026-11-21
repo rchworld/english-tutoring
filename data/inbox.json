@@ -1,5 +1,31 @@
 [
   {
+    "id": "aihr-hr-business-partner-certifications",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "What HR Certification is Best for HR Business Partners?",
+    "url": "https://www.aihr.com/blog/hr-business-partner-certifications/",
+    "category": "Articles",
+    "published": "2026-11-20",
+    "collectedAt": "2026-11-21",
+    "status": "pending",
+    "raw": "data/raw/aihr-hr-business-partner-certifications.md",
+    "chars": 20940
+  },
+  {
+    "id": "aihr-organizational-development-training",
+    "source": "aihr",
+    "sourceName": "AIHR",
+    "title": "Best Organizational Development Training & Certifications: 18 Programs",
+    "url": "https://www.aihr.com/blog/organizational-development-training/",
+    "category": "Articles",
+    "published": "2026-11-20",
+    "collectedAt": "2026-11-21",
+    "status": "pending",
+    "raw": "data/raw/aihr-organizational-development-training.md",
+    "chars": 26521
+  },
+  {
     "id": "aihr-hrci-vs-shrm",
     "source": "aihr",
     "sourceName": "AIHR",
